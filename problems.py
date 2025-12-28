@@ -8,4 +8,18 @@ class Solution:
                 if (nums[i] + nums[j] == target):
                     return [i, j]
                 
+    # 9. Palindrome Number
+    def isPalindrome(self, x: int) -> bool:
+        if (x < 0):
+            return False
+        if (x < 10):
+            return True
+        x_str = str(x)
+        x_len = len(x_str)
+        if (x_str[x_len-1] == '0'):
+            return False
+        for i in range(x_len//2):
+            if (x_str[i] != x_str[x_len-1-i]):
+                return False
+        return True
     
