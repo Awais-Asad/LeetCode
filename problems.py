@@ -43,3 +43,22 @@ class Solution:
         sum = sum + symbol_mapping[s[len(s)-1]]
         return sum
     
+    # 14. Longest Common Prefix
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        prefix = strs[0]
+        for word in strs:
+            if (word == ""):
+                return ""
+            new_prefix = ""
+            for i in range(min(len(prefix),len(word))):
+                if (prefix[i] != word[i]):
+                    if (i == 0):
+                        return ""
+                    else:
+                        new_prefix = prefix[:i]
+                        break
+                else:
+                    new_prefix = new_prefix + prefix[i]
+            prefix = new_prefix
+        return prefix
+    
