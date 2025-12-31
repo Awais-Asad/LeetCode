@@ -62,3 +62,26 @@ class Solution:
             prefix = new_prefix
         return prefix
     
+    # 20. Valid Parentheses
+    def isValid(self, s: str) -> bool:
+        open_brackets = ["(", "[", "{"]
+        closed_brackets = [")", "]", "}"]
+        stack = []
+
+        for char in s:
+            try:
+                index = closed_brackets.index(char)
+                if (len(stack) > 0 and stack.pop() == open_brackets[index]):
+                    continue
+                else:
+                    return False
+
+            except ValueError:
+                stack.append(char)
+
+        if (len(stack) == 0):
+            return True
+        else:
+            return False
+        
+    
